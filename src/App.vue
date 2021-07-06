@@ -8,6 +8,12 @@
       <template v-slot:title>
         <h2>フローラルの専門店</h2>
       </template>
+      <!-- 名前付きではないデフォルトのスロット -->
+      <template v-slot:default> <!-- Vue内部ではデフォルトというslotが付与される -->
+        <h2>セガサターン</h2>
+        <h3>マッキントッシュプラス</h3>
+        <p>リサフランク420/現代のコンピュー</p>
+      </template>
       <!-- 必ずテンプレートとv-slotでセットで使用する -->
       <template v-slot:like>
         <p>{{ number }}</p>

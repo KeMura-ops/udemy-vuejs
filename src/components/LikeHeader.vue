@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- slotタグで親コンポーネントで定義したものをHTMLやテンプレート構文を受け取れる -->
-    <slot name="title"></slot> 
+    <slot name="title"></slot>
+    <slot></slot> <!-- defaultはname属性なしでも問題なく動作する -->
     <hr>
     <p>いいねの数</p>
     <slot name="like"></slot>
