@@ -5,8 +5,10 @@
     <LikeHeader>
       <!-- テンプレートを用意してその中に要素を書いてv-slotで名前を付けると
       各スロットに別々の要素を適用できる -->
-      <template v-slot:title>
+      <template v-slot:title="slotProps"> <!-- スロットプロパティ -->
         <h2>フローラルの専門店</h2>
+        <!-- slotProps(名前はどれでも良い)で子からデータを受け取っている -->
+        <h2>{{ slotProps.user.lastName }}</h2>
       </template>
       <!-- 名前付きではないデフォルトのスロット -->
       <template v-slot:default> <!-- Vue内部ではデフォルトというslotが付与される -->
