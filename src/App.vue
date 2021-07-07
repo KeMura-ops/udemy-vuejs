@@ -2,24 +2,12 @@
   <div> <!--  divで囲む -->
     <!-- 登録したコンポーネントを使えるようになる
     App.vueから見たら以下は「子」コンポーネントにあたる -->
-    <LikeHeader>
-      <!-- テンプレートを用意してその中に要素を書いてv-slotで名前を付けると
-      各スロットに別々の要素を適用できる -->
-      <template v-slot:title="slotProps"> <!-- スロットプロパティ -->
-        <h2>フローラルの専門店</h2>
-        <!-- slotProps(名前はどれでも良い)で子からデータを受け取っている -->
-        <h2>{{ slotProps.user.lastName }}</h2>
-      </template>
+    <LikeHeader  v-slot="slotProps"> <!-- スロットプロパティの省略記法 -->
       <!-- 名前付きではないデフォルトのスロット -->
-      <template v-slot:default> <!-- Vue内部ではデフォルトというslotが付与される -->
+        <p>{{ slotProps }}</p>
         <h2>セガサターン</h2>
         <h3>マッキントッシュプラス</h3>
         <p>リサフランク420/現代のコンピュー</p>
-      </template>
-      <!-- 必ずテンプレートとv-slotでセットで使用する -->
-      <template v-slot:like>
-        <p>{{ number }}</p>
-      </template>
     </LikeHeader>
     <!-- 「props」で指定したものを属性値のように使うことでデータを受けわたせる -->
     <!-- v-bindで動的に表現できる。(親のdataのnumberを指定している)「:」のみでも良い -->
