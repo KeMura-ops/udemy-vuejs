@@ -1,13 +1,14 @@
 <template>
   <div>
-    <LikeHeader>
+    <LikeHeader #default="slotProps">
+      <!-- コンポーネントにデフォルトスロットを記述する場合は
+      「#default=""」とする -->
         <p>{{ slotProps }}</p>
         <h2>セガサターン</h2>
         <h3>マッキントッシュプラス</h3>
         <p>リサフランク420/現代のコンピュー</p>
-        <template v-slot:[title]></template> <!-- 動的なスロット名 -->
-        <!-- 以上でdataにあるtitleにアクセスし
-        <template v-slot:hello></template>と同義になる -->
+        <!-- <template #[title]></template> 動的なスロット名 -->
+        <!-- v-slotは「#」に置き換えることができる -->
     </LikeHeader>
     <!-- 「props」で指定したものを属性値のように使うことでデータを受けわたせる -->
     <!-- v-bindで動的に表現できる。(親のdataのnumberを指定している)「:」のみでも良い -->
