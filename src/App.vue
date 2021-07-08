@@ -1,36 +1,37 @@
 <template>
   <div>
-    <LikeHeader #default="slotProps">
-      <!-- コンポーネントにデフォルトスロットを記述する場合は
-      「#default=""」とする -->
-        <p>{{ slotProps }}</p>
-        <h2>セガサターン</h2>
-        <h3>マッキントッシュプラス</h3>
-        <p>リサフランク420/現代のコンピュー</p>
-        <!-- <template #[title]></template> 動的なスロット名 -->
-        <!-- v-slotは「#」に置き換えることができる -->
+    <LikeHeader>
+      <h3>リサフランク420/現代のコンピュー</h3>
     </LikeHeader>
-    <!-- 「props」で指定したものを属性値のように使うことでデータを受けわたせる -->
     <!-- v-bindで動的に表現できる。(親のdataのnumberを指定している)「:」のみでも良い -->
     <LikeNumber :total-number="number" @my-click="incNumber"></LikeNumber> <!-- @my-clickはカスタムイベント -->
-    <LikeNumber :total-number="number"></LikeNumber>
-    <!-- HTML内はpropsプロパティ(属性値)の名前はケバブケースで書くことが推奨されている -->
+    <button @click="currentComponent = 'Home'">Home</button>
+    <button @click="currentComponent = 'About'">About</button>
+    <!-- 動的コンポーネント -->
+    <!-- コンポーネントのタグを用意し、「is」属性を指定することよって
+    その属性値を変更することによってコンポーネントを動的に変更する -->
+    <component :is= "currentComponent"></component>
   </div>
 </template>
 
 <script>
 // ローカル登録(特定のファイル(App.vue)でのみ使用するコンポーネント)
-import LikeHeader from "./components/LikeHeader.vue"
+import LikeHeader from "./components/LikeHeader.vue";
+import About from "./components/About.vue";
+import Home from "./components/Home.vue";
 
 export default {
   data() {
     return {
       number: 92,
-      title: "hello"
+      currentComponent: "About" // 初期値の設定
     };
   },
   components: { // コンポーネンツオプション(オブジェクト)
-    LikeHeader: LikeHeader // 「LikeHeader」のみで短縮も可能。ちなみにキー: バリュー
+    LikeHeader: LikeHeader, // 「LikeHeader」のみで短縮も可能。ちなみにキー: バリュー
+    // 新しいコンポーネントの登録
+    About,
+    Home
   },
   methods: { // $emitによるカスタムイベントの処理
     incNumber(value) {

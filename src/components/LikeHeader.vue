@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- slotタグで親コンポーネントで定義したものをHTMLやテンプレート構文を受け取れる -->
-    <!-- slotタグの中に要素やデータを記述すると親コンポーネントにそれを引き渡せる -->
-    <slot v-bind:user="user" text="text"></slot>
-    <slot></slot> <!-- defaultはname属性なしでも問題なく動作する -->
-    <hr>
-    <p>いいねの数</p>
     <slot></slot>
   </div>
 </template>
