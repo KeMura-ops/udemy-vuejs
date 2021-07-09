@@ -11,6 +11,12 @@
     <keep-alive>
       <component :is= "currentComponent"></component>
     </keep-alive>
+    <div>
+      <h2>イベントのフォーム</h2>
+      <label for="title">タイトル</label>
+      <input id="title" type="text" v-model="eventData.title"> <!-- データ(モデル)にアクセス -->
+      <p>{{ eventData.title }}</p> <!-- 初期値の出力(変更できる) -->
+    </div>
   </div>
 </template>
 
@@ -24,7 +30,10 @@ export default {
   data() {
     return {
       number: 92,
-      currentComponent: "About" // 初期値の設定
+      currentComponent: "About", // 初期値の設定
+      eventData: {
+        title: "タイトル"
+      }
     };
   },
   components: { // コンポーネンツオプション(オブジェクト)
@@ -40,9 +49,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  div {
-    border: 1px solid blue;
-  }
-</style>

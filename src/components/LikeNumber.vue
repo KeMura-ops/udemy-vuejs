@@ -29,12 +29,6 @@ export default {
 }
 </script>
 
-<style scoped> 
-  div {
-    border: 1px solid red;
-  }
-</style>
-
 <!-- コンポーネントの数々は「components」ディレクトリにまとめて管理する -->
 <!-- cssに範囲指定をしたい場合は「scoped」を使用する(全てのdivタグに適用されるため)
 検証ツールでheadタグを見るとdiv[data-v-27663f0]と言ったdivタグに属性が付いている
