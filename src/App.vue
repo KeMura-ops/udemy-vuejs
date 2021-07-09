@@ -7,10 +7,10 @@
     <LikeNumber :total-number="number" @my-click="incNumber"></LikeNumber> <!-- @my-clickはカスタムイベント -->
     <button @click="currentComponent = 'Home'">Home</button>
     <button @click="currentComponent = 'About'">About</button>
-    <!-- 動的コンポーネント -->
-    <!-- コンポーネントのタグを用意し、「is」属性を指定することよって
-    その属性値を変更することによってコンポーネントを動的に変更する -->
-    <component :is= "currentComponent"></component>
+    <!-- 「keep-alive」タグでコンポーネントを包むことにより、切り替える以前の状態を保持できる -->
+    <keep-alive>
+      <component :is= "currentComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
