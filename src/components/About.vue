@@ -7,8 +7,15 @@
 
 <script>
 export default {
-  destroyed() {
+  destroyed() { // 「keepalive」によってdestroyedは実行されなくなる
     console.log("破壊されました");
+  },
+  // その代わりに、activated、deactivatedという新しいライフサイクルフックが使用できる
+  deactivated() {
+    console.log("deactivated");
+  },
+  activated() {
+    console.log("activated");
   }
 }
 </script>
