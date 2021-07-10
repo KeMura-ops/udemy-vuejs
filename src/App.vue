@@ -18,6 +18,12 @@
       <!-- lazy修飾子で入力完了後に結果を反映させるようにする(changeイベント)
       メールアドレス入力後のバリデーションチェックのシーンなどで使われる -->
       <p>{{ eventData.title }}</p> <!-- 初期値の出力(変更できる) -->
+
+      <label for="maxNumber">最大人数</label>
+      <!-- 「.number」修飾子でユーザーが入力した数字の型を「number」にする(デフォルトの場合「string」) -->
+      <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
+      <!-- 型(type)を「number」にすることでinputタグ内でカウントアップできる -->
+      <p>{{ typeof eventData.maxNumber }}</p> <!-- typeofでデータの型を検出する -->
     </div>
   </div>
 </template>
@@ -34,7 +40,8 @@ export default {
       number: 92,
       currentComponent: "About", // 初期値の設定
       eventData: {
-        title: "タイトル"
+        title: "タイトル",
+        maxNumber: 0
       }
     };
   },
