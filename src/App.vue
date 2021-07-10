@@ -14,7 +14,9 @@
     <div>
       <h2>イベントのフォーム</h2>
       <label for="title">タイトル</label>
-      <input id="title" type="text" v-model="eventData.title"> <!-- データ(モデル)にアクセス -->
+      <input id="title" type="text" v-model.lazy="eventData.title"> <!-- データ(モデル)にアクセス -->
+      <!-- lazy修飾子で入力完了後に結果を反映させるようにする(changeイベント)
+      メールアドレス入力後のバリデーションチェックのシーンなどで使われる -->
       <p>{{ eventData.title }}</p> <!-- 初期値の出力(変更できる) -->
     </div>
   </div>
