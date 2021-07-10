@@ -14,16 +14,19 @@
     <div>
       <h2>イベントのフォーム</h2>
       <label for="title">タイトル</label>
-      <input id="title" type="text" v-model.lazy="eventData.title"> <!-- データ(モデル)にアクセス -->
-      <!-- lazy修飾子で入力完了後に結果を反映させるようにする(changeイベント)
-      メールアドレス入力後のバリデーションチェックのシーンなどで使われる -->
-      <p>{{ eventData.title }}</p> <!-- 初期値の出力(変更できる) -->
+      <input id="title" type="text" v-model.lazy="eventData.title">
+      <pre>{{ eventData.title }}</pre> <!-- 「pre」タグによって空白を出力できる -->
 
       <label for="maxNumber">最大人数</label>
       <!-- 「.number」修飾子でユーザーが入力した数字の型を「number」にする(デフォルトの場合「string」) -->
       <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
       <!-- 型(type)を「number」にすることでinputタグ内でカウントアップできる -->
       <p>{{ typeof eventData.maxNumber }}</p> <!-- typeofでデータの型を検出する -->
+
+      <label for="host">主催者</label>
+      <input id="host" type="text" v-model.trim="eventData.host">
+      <!-- .trim修飾子によって先頭と後ろに空白を打ち込んでもそれが検出されなくなる(文字の間の空白は検出される) -->
+      <pre>{{ eventData.host }}</pre>
     </div>
   </div>
 </template>
@@ -41,7 +44,8 @@ export default {
       currentComponent: "About", // 初期値の設定
       eventData: {
         title: "タイトル",
-        maxNumber: 0
+        maxNumber: 0,
+        host: ""
       }
     };
   },
