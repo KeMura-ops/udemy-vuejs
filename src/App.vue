@@ -55,6 +55,7 @@ export default {
         maxNumber: 0,
         host: "",
         detail: "",
+        // 単体チェックボックスにv-modelを適用した場合、その中身はboolean(真偽値)になる
         isPrivate: false
       }
     };
