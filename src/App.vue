@@ -30,6 +30,11 @@
       <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
       <!-- スタイルに「"white-space: pre;"」と指定することで<pre>と同じ挙動になる -->
       <p style="white-space: pre;">{{ eventData.detail }}</p>
+
+      <!-- チェックボックスにもv-modelを適用できる -->
+      <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
+      <label for="isPrivate">非公開</label>
+      <p>{{ eventData.isPrivate }}</p>
     </div>
   </div>
 </template>
@@ -49,7 +54,8 @@ export default {
         title: "",
         maxNumber: 0,
         host: "",
-        detail: ""
+        detail: "",
+        isPrivate: false
       }
     };
   },
