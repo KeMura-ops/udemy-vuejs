@@ -18,15 +18,18 @@
       <pre>{{ eventData.title }}</pre> <!-- 「pre」タグによって空白を出力できる -->
 
       <label for="maxNumber">最大人数</label>
-      <!-- 「.number」修飾子でユーザーが入力した数字の型を「number」にする(デフォルトの場合「string」) -->
       <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
-      <!-- 型(type)を「number」にすることでinputタグ内でカウントアップできる -->
-      <p>{{ typeof eventData.maxNumber }}</p> <!-- typeofでデータの型を検出する -->
+      <p>{{ eventData.maxNumber }}</p>
 
       <label for="host">主催者</label>
       <input id="host" type="text" v-model.trim="eventData.host">
-      <!-- .trim修飾子によって先頭と後ろに空白を打ち込んでもそれが検出されなくなる(文字の間の空白は検出される) -->
       <pre>{{ eventData.host }}</pre>
+
+      <label for="detail">イベントの内容</label>
+      <!-- 複数行テキスト(textarea)にもv-modelを使用し双方向にデータバインディングができる -->
+      <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
+      <!-- スタイルに「"white-space: pre;"」と指定することで<pre>と同じ挙動になる -->
+      <p style="white-space: pre;">{{ eventData.detail }}</p>
     </div>
   </div>
 </template>
@@ -43,9 +46,10 @@ export default {
       number: 92,
       currentComponent: "About", // 初期値の設定
       eventData: {
-        title: "タイトル",
+        title: "",
         maxNumber: 0,
-        host: ""
+        host: "",
+        detail: ""
       }
     };
   },
