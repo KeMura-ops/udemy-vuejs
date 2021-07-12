@@ -11,7 +11,7 @@
     <keep-alive>
       <component :is= "currentComponent"></component>
     </keep-alive>
-    <div>
+    <div style="padding: 10rem;">
       <h2>イベントのフォーム</h2>
       <label for="title">タイトル</label>
       <input id="title" type="text" v-model.lazy="eventData.title">
@@ -53,6 +53,14 @@
       <input type="radio" id="paid" value="有料" v-model="eventData.price">
       <label for="paid">有料</label>
       <!-- v-modelで同じデータを共有することでHTML上で紐ついていなくてもデータをバインディングできる -->
+
+      <!-- セレクトボックス -->
+      <p>開催場所</p>
+      <!-- オブションで「select」の中に「multiple」を付けるとチェックボックスと同様に複数選択ができる -->
+      <select v-model="eventData.location">
+        <option v-for="location in locations" :key="location">{{ location }}</option>
+      </select>
+      {{ eventData.location }}
     </div>
   </div>
 </template>
@@ -68,6 +76,7 @@ export default {
     return {
       number: 92,
       currentComponent: "About", // 初期値の設定
+      locations: ['Tokyo', 'Osaka', 'Fukuoka'],
       eventData: {
         title: "",
         maxNumber: 0,
@@ -76,8 +85,10 @@ export default {
         // 単体チェックボックスにv-modelを適用した場合、その中身はboolean(真偽値)になる
         isPrivate: false,
         // チェックボックスが複数ある場合は配列を用いてデータバインディングをする
-        target: [],
-        price: "無料"
+        target: [], // 値を配列で指定する
+        price: "無料",
+        location: "Tokyo"
+        // 複数選択を可能にした場合はチェックボックスと同様にデフォルトの値を配列[]にする
       }
     };
   },
