@@ -35,6 +35,16 @@
       <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
       <label for="isPrivate">非公開</label>
       <p>{{ eventData.isPrivate }}</p>
+
+      <!-- チェックボックスが複数個ある場合 -->
+      <p>参加条件</p>
+      <input type="checkbox" id="10" value="10代" v-model="eventData.target">
+      <label for="10">10代</label>
+      <input type="checkbox" id="20" value="20代" v-model="eventData.target">
+      <label for="10">20代</label>
+      <input type="checkbox" id="30" value="30代" v-model="eventData.target">
+      <label for="10">30代</label>
+      <p>{{ eventData.target }}</p>
     </div>
   </div>
 </template>
@@ -56,7 +66,9 @@ export default {
         host: "",
         detail: "",
         // 単体チェックボックスにv-modelを適用した場合、その中身はboolean(真偽値)になる
-        isPrivate: false
+        isPrivate: false,
+        // チックボックスが複数ある場合は配列を用いてデータバインディングをする
+        target: []
       }
     };
   },
