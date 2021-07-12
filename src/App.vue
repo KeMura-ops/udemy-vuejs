@@ -45,6 +45,14 @@
       <input type="checkbox" id="30" value="30代" v-model="eventData.target">
       <label for="10">30代</label>
       <p>{{ eventData.target }}</p>
+
+      <!-- ラジオボタン -->
+      <p>参加費</p>
+      <input type="radio" id="free" value="無料" v-model="eventData.price">
+      <label for="free">無料</label>
+      <input type="radio" id="paid" value="有料" v-model="eventData.price">
+      <label for="paid">有料</label>
+      <!-- v-modelで同じデータを共有することでHTML上で紐ついていなくてもデータをバインディングできる -->
     </div>
   </div>
 </template>
@@ -67,8 +75,9 @@ export default {
         detail: "",
         // 単体チェックボックスにv-modelを適用した場合、その中身はboolean(真偽値)になる
         isPrivate: false,
-        // チックボックスが複数ある場合は配列を用いてデータバインディングをする
-        target: []
+        // チェックボックスが複数ある場合は配列を用いてデータバインディングをする
+        target: [],
+        price: "無料"
       }
     };
   },
