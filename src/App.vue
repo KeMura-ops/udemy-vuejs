@@ -14,7 +14,16 @@
     <div style="padding: 10rem;">
       <h2>イベントのフォーム</h2>
       <label for="title">タイトル</label>
-      <input id="title" type="text" v-model.lazy="eventData.title">
+      <input id="title" type="text"
+        :value="eventData.title"
+        @input="eventData.title = $event.target.value"
+      > <!-- 実際のv-modelの中身は上記の通り
+            inputの入力値がvalueになっており
+            それをeventData.titleに代入している
+            ちなみにlazy修飾子を使用する場合は
+            @inputの部分を@changeに変更する
+            上記のコードはinputタグで型がtextの場合のv-modelの変化となる
+            タグや型によってv-modelの中身は変化する -->
       <pre>{{ eventData.title }}</pre> <!-- 「pre」タグによって空白を出力できる -->
 
       <label for="maxNumber">最大人数</label>
