@@ -13,18 +13,14 @@
     </keep-alive>
     <div style="padding: 10rem;">
       <h2>イベントのフォーム</h2>
-      <label for="title">タイトル</label>
-      <input id="title" type="text"
-        :value="eventData.title"
-        @input="eventData.title = $event.target.value"
-      > <!-- 実際のv-modelの中身は上記の通り
-            inputの入力値がvalueになっており
-            それをeventData.titleに代入している
-            ちなみにlazy修飾子を使用する場合は
-            @inputの部分を@changeに変更する
-            上記のコードはinputタグで型がtextの場合のv-modelの変化となる
-            タグや型によってv-modelの中身は変化する -->
-      <pre>{{ eventData.title }}</pre> <!-- 「pre」タグによって空白を出力できる -->
+      <EventTitle v-model="eventData.title"></EventTitle> <!-- フォーム部分を部品化(コンポーネント化)し、使用のため定義 -->
+      <!-- 
+        <EventTitle
+          :value="eventData.title"
+          @input="eventData.title = $event"
+        ></EventTitle>
+      コンポーネントにv-modelを適用した際の中身
+      -->
 
       <label for="maxNumber">最大人数</label>
       <input id="maxNumber" type="number" v-model.number="eventData.maxNumber">
@@ -79,6 +75,7 @@
 import LikeHeader from "./components/LikeHeader.vue";
 import About from "./components/About.vue";
 import Home from "./components/Home.vue";
+import EventTitle from "./components/EventTitle.vue";
 
 export default {
   data() {
@@ -105,7 +102,8 @@ export default {
     LikeHeader: LikeHeader, // 「LikeHeader」のみで短縮も可能。ちなみにキー: バリュー
     // 新しいコンポーネントの登録
     About,
-    Home
+    Home,
+    EventTitle
   },
   methods: { // $emitによるカスタムイベントの処理
     incNumber(value) {
