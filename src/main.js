@@ -9,9 +9,9 @@ Vue.config.productionTip = false
 Vue.component('LikeNumber', LikeNumber);
 
 // カスタムディレクティブの登録
-Vue.directive('border', function(el, binding) {
-  // 主に使われる関数は「bind」,「update」の二つ
-  // bind,updateを一つの関数にまとめることができる
+Vue.directive('border', function(el) {
+  // 「el」で今回borderに紐づいた「p」タグを取得している
+  el.style.border = 'solid black 2px';
 });
 
 new Vue({
