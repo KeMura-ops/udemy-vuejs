@@ -14,6 +14,12 @@ Vue.directive('border', function(el, binding) {
   el.style.borderWidth = binding.value.width;
   el.style.borderColor = binding.value.color;
   el.style.borderStyle = binding.arg; // カスタムディレクティブの引数の値を取る
+  if (binding.modifiers.round) { // 修飾子はif文で条件分岐し、trueであれば以降の処理が実行される
+    el.style.borderRadius = "0.5rem";
+  }
+  if (binding.modifiers.shadow) { // 「modifiers」を使用することが重要
+    el.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.26)";
+  }
 });
 
 new Vue({
