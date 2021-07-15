@@ -14,6 +14,9 @@ Vue.directive('border', function(el, binding) {
   el.style.border = 'solid black';
   // binding.valueとすることで、カスタムディレクティブ側のデータを受け取れる
   el.style.borderWidth = binding.value;
+  // それぞれのデータをvalueの後に記述する
+  el.style.borderWidth = binding.value.width;
+  el.style.borderColor = binding.value.color;
 });
 
 new Vue({

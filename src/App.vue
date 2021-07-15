@@ -81,7 +81,7 @@ export default {
   data() {
     return {
       number: 92,
-      currentComponent: "About", // 初期値の設定
+      currentComponent: "Home", // 初期値の設定
       locations: ['Tokyo', 'Osaka', 'Fukuoka'],
       eventData: {
         title: "",
