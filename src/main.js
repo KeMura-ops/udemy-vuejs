@@ -8,6 +8,12 @@ Vue.config.productionTip = false
 // コンポーネントのグローバル登録(全てのVueファイルで使用できるコンポーネント)
 Vue.component('LikeNumber', LikeNumber);
 
+// フィルターの登録
+// 引数の中身はフィルターの名前と関数とブロック変数を記述する
+Vue.filter("upperCase", function(value) {
+  return value.toUpperCase(); // 文字列を大文字にする処理
+});
+
 new Vue({
   render: h => h(App)
 }).$mount('#app')

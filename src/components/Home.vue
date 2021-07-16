@@ -1,23 +1,26 @@
 <template>
-  <!-- 複数のデータを渡したい時はオブジェクトにして記述する -->
-  <!-- :[引数の値]で引数を渡すことが出来る -->
-  <!-- 引数の後に、「.」で修飾子をいくつも付け加えることが出来る -->
-  <p v-border:solid.round.shadow="{width: '3px', color: 'brown'}">{{tmpData}}</p>
+  <div>
+    <p v-border:solid.round.shadow="{width: '3px', color: 'brown'}">{{ tmpData }}</p>
+    <h2>{{ title |  upperCase}}</h2> <!-- フィルターの適用 -->
+    <!-- 「プロパティ名 | フィルター名」でどの文字列でもフォーマット変更に対応できる -->
+    <p>{{ title | upperCase }}</p>
+  </div>
 </template>
 
 <script>
 // カスタムディレクティブのローカル登録
 export default {
-  // データ関数を用意して、初期値を表示出来るが、
-  // カスタムディレクティブにおいてはthisを用いて値を上書きすることは不可能なので注意する
   data() {
     return {
-      tmpData: "新しい日の誕生"
+      tmpData: "新しい日の誕生",
+      title: "Welcome to Kanagawa",
+      subTitle: "Kanagawa is a great city"
+      // subTitleのようにもう一つフォーマットを変更したい場合、再びcomputedを用意するのは手間なので(下記参照)
+      // フィルターを使用し、一まとめに出来る。
     };
   },
   directives: {
     border(el, binding) {
-      // this.tmpData = "こんにちは"  ←エラーになる
       el.style.borderWidth = binding.value.width;
       el.style.borderColor = binding.value.color;
       el.style.borderStyle = binding.arg;
@@ -31,3 +34,9 @@ export default {
   }
 };
 </script>
+
+<!-- computed: { // computedでテキストフォーマットを変更する方法
+  upperCaseTitle() {
+    return this.title.toUpperCase(); // 大文字にする
+  }
+}, -->
