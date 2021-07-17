@@ -3,29 +3,28 @@
     <p v-border:solid.round.shadow="{width: '3px', color: 'brown'}">{{ tmpData }}</p>
     <h2>{{ title |  lowerCase | upperCase }}</h2>
     <p>{{ subTitle | upperCase | lowerCase }}</p>
-    <!-- フィルターの挙動を確認する -->
     <p>{{ number }}</p>
     <button @click="number++">+1</button>
+    <CountNumber></CountNumber>
   </div>
 </template>
 
 <script>
-// カスタムディレクティブのローカル登録
+import CountNumber from "./CountNumber.vue";
+import { tokyoNumber } from "@/tokyoNumber" // ミックスインの登録
+
 export default {
+  // ミックスインの使用
+  mixins: [tokyoNumber],
   data() {
     return {
       tmpData: "新しい日の誕生",
-      title: "Welcome to Kanagawa",
-      subTitle: "Kanagawa is a great city",
-      number: 0
     };
   },
-  // フィルターのローカル登録
-  filters: {
-    lowerCase(value) {
-      return value.toLowerCase();
-    }
+  components: {
+    CountNumber
   },
+  // カスタムディレクティブのローカル登録
   directives: {
     border(el, binding) {
       el.style.borderWidth = binding.value.width;
