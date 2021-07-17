@@ -1,11 +1,11 @@
 <template>
   <div>
     <p v-border:solid.round.shadow="{width: '3px', color: 'brown'}">{{ tmpData }}</p>
-    <!-- ローカルやグローバルに登録されたフィルターの連結 -->
-    <!-- 例の場合、先に大文字の処理がなされて、最終的に小文字の処理がなされる
-         2行目はその逆の処理 -->
     <h2>{{ title |  lowerCase | upperCase }}</h2>
     <p>{{ subTitle | upperCase | lowerCase }}</p>
+    <!-- フィルターの挙動を確認する -->
+    <p>{{ number }}</p>
+    <button @click="number++">+1</button>
   </div>
 </template>
 
@@ -16,9 +16,8 @@ export default {
     return {
       tmpData: "新しい日の誕生",
       title: "Welcome to Kanagawa",
-      subTitle: "Kanagawa is a great city"
-      // subTitleのようにもう一つフォーマットを変更したい場合、再びcomputedを用意するのは手間なので(下記参照)
-      // フィルターを使用し、一まとめに出来る。
+      subTitle: "Kanagawa is a great city",
+      number: 0
     };
   },
   // フィルターのローカル登録
