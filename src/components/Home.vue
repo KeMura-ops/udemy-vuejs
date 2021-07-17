@@ -1,9 +1,11 @@
 <template>
   <div>
     <p v-border:solid.round.shadow="{width: '3px', color: 'brown'}">{{ tmpData }}</p>
-    <h2>{{ title |  lowerCase }}</h2> <!-- フィルターの適用 -->
-    <!-- 「プロパティ名 | フィルター名」でどの文字列でもフォーマット変更に対応できる -->
-    <p>{{ subTitle | lowerCase }}</p>
+    <!-- ローカルやグローバルに登録されたフィルターの連結 -->
+    <!-- 例の場合、先に大文字の処理がなされて、最終的に小文字の処理がなされる
+         2行目はその逆の処理 -->
+    <h2>{{ title |  lowerCase | upperCase }}</h2>
+    <p>{{ subTitle | upperCase | lowerCase }}</p>
   </div>
 </template>
 
