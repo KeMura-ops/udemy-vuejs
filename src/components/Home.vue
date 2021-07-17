@@ -1,9 +1,9 @@
 <template>
   <div>
     <p v-border:solid.round.shadow="{width: '3px', color: 'brown'}">{{ tmpData }}</p>
-    <h2>{{ title |  upperCase}}</h2> <!-- フィルターの適用 -->
+    <h2>{{ title |  lowerCase }}</h2> <!-- フィルターの適用 -->
     <!-- 「プロパティ名 | フィルター名」でどの文字列でもフォーマット変更に対応できる -->
-    <p>{{ title | upperCase }}</p>
+    <p>{{ subTitle | lowerCase }}</p>
   </div>
 </template>
 
@@ -18,6 +18,12 @@ export default {
       // subTitleのようにもう一つフォーマットを変更したい場合、再びcomputedを用意するのは手間なので(下記参照)
       // フィルターを使用し、一まとめに出来る。
     };
+  },
+  // フィルターのローカル登録
+  filters: {
+    lowerCase(value) {
+      return value.toLowerCase();
+    }
   },
   directives: {
     border(el, binding) {
