@@ -12,5 +12,10 @@ export const tokyoNumber = {
     lowerCase(value) {
       return value.toLowerCase();
     }
+  },
+  // ミックスインのオプションで被りが起こった場合、基本的にはコンポーネントのデータが優先されるが、
+  // createdなどライフサイクルフックの処理は先にミックスインの処理がなされてから、コンポーネントの処理がされる
+  created() {
+    console.log("Created in Mixin");
   }
 };

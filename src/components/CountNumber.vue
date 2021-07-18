@@ -13,6 +13,11 @@ import { tokyoNumber } from "@/tokyoNumber"; // tokyoNumber.jsのパス
 
 export default {
   // ミックスインによってインポートしたjsファイルを呼び出す
-  mixins: [tokyoNumber]
+  mixins: [tokyoNumber],
+  // コンポーネントとミックスインにライフサイクルフックの処理がある場合
+  // 両方の処理が行われるが、ミックスインのあとで以下のライフサイクルフックが実行される
+  created() {
+    console.log("コンポーネントからクリエイトされてまーす");
+  }
 };
 </script>
