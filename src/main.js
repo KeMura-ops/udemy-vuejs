@@ -14,6 +14,15 @@ Vue.filter("upperCase", function(value) {
   return value.toUpperCase(); // 文字列を大文字にする処理
 });
 
+// ミックスインのグローバル登録
+// 全てのコンポーネント、インスタンスにおいて実行されるので、使用には注意が必要
+// ミックスインのグローバル登録は基本的には使用しないという認識で良い
+Vue.mixin({
+  created() {
+    console.log("グローバル ミックスイン");
+  }
+})
+
 new Vue({
   render: h => h(App)
 }).$mount('#app')
